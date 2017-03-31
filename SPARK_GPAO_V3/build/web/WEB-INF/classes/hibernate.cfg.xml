@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+    <property name="hibernate.connection.username">SPARK_GPAO_V3</property>
+    <property name="hibernate.connection.password">spark_it</property>
+    <mapping resource="com/entities/Article.hbm.xml"/>
+    <mapping/>
+    <mapping resource="com/entities/Comptabilite.hbm.xml"/>
+    <mapping resource="com/entities/LigneNomenclature.hbm.xml"/>
+    <mapping/>
+    <mapping resource="com/entities/Nomenclature.hbm.xml"/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping resource="com/entities/Machine.hbm.xml"/>
+    <mapping/>
+    <mapping/>
+    <mapping resource="com/entities/Postetravail.hbm.xml"/>
+    <mapping resource="com/entities/Atelier.hbm.xml"/>
+    <mapping resource="com/entities/Chaine.hbm.xml"/>
+    <mapping resource="com/entities/Usine.hbm.xml"/>
+    <mapping/>
+    <mapping resource="com/entities/Lignenomenclature.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

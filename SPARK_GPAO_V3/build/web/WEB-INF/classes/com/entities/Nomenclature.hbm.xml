@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 mars 2017 15:30:52 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.entities.Nomenclature" table="NOMENCLATURE" schema="SPARK_GPAO_V3">
+        <id name="code" type="string">
+            <column name="CODE" length="100" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="article" lazy="false" class="com.entities.Article" fetch="join">
+            <column name="ARTICLE" length="100"></column>
+        </many-to-one>
+        <property name="typenomenclature" type="string">
+            <column name="TYPENOMENCLATURE" length="100" />
+        </property>
+        <property name="datecreation" type="date">
+            <column name="DATECREATION" length="7" />
+        </property>
+        <property name="observation" type="string">
+            <column name="OBSERVATION" length="3999" />
+        </property>
+        <property name="multiniveau" type="string">
+            <column name="MULTINIVEAU" length="100" />
+        </property>
+        <property name="cbn" type="string">
+            <column name="CBN" length="100" />
+        </property>
+        <property name="comptabilite" type="string">
+            <column name="COMPTABILITE" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

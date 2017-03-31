@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <!--xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"-->
+    <h:head>
+        <title><ui:insert name="title">Titre par défaut</ui:insert></title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <h:outputStylesheet library="sh" name="css/shCore.css"/>
+        <h:outputStylesheet library="sh" name="css/shCoreEclipse.css" />
+
+        <h:outputStylesheet name="last.css"/>
+        <h:outputStylesheet name="first.css"/>
+        <h:outputStylesheet name="middle.css" />
+
+        <h:outputStylesheet library="customthemes"
+                            name="#{theme.customTheme}/bootstrap.min.css"
+                            rendered="#{theme.customTheme ne ''}" />
+        <h:outputStylesheet library="customthemes"
+                            name="#{theme.customTheme}/#{theme.customTheme}.css"
+                            rendered="#{theme.customTheme ne ''}" />
+
+
+        <style>
+            .ui-growl-item {
+                display: block;
+                padding: 10px 15px;
+                margin-top: 35px;
+                font-size: 15px;
+                font-family: Arial;	
+            }
+            .ui-inputfield {
+                margin: 0;
+                outline: medium none;
+                padding: 4px;
+                font-weight: normal;
+                width: 100%;
+            }
+            body {
+                font-size: 12px;
+                font-family: Arial;
+            }
+
+            .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
+            .table>tbody>tr>td, .table>tfoot>tr>td {
+                padding: 4px;
+            }
+
+            .tooltip-inner {
+                max-width: 350px;
+                /* If max-width does not work, try using width instead */
+                width: 350px;
+            }
+
+            #bsfscroll {
+                background-image: url("#{resource['images:top.png']}");
+                bottom: 65px;
+                right: 18px;
+                width: 38px; /* width of the custom image */
+                height: 38px; /* height of the custom image */
+                outline: none;
+            }
+        </style>
+
+        <ui:insert name="custom-header" />
+    </h:head>
+    <h:body style="padding-top: 80px;padding-bottom: 80px;">
+        <!--addLabels="false" addMessages="false">-->
+
+        <h:outputScript library="sh" name="js/shCore.js" target="head" />
+        <h:outputScript library="sh" name="js/shBrushCss.js" target="head" />
+        <h:outputScript library="sh" name="js/shBrushXml.js" target="head" />
+        <h:outputScript library="sh" name="js/shBrushJava.js" target="head" />
+        <h:outputScript library="sh" name="js/shBrushGroovy.js" target="head" />
+        <h:outputScript library="sh" name="js/shBrushJScript.js" target="head" />
+        <h:outputScript library="sh" name="js/bootstrap-datetimepicker.min.js" target="head" />
+        <h:outputScript library="sh" name="js/moment.min.js" target="head" /> 
+
+        <script>SyntaxHighlighter.defaults['gutter'] = false;</script>
+
+        <script type="text/javascript">
+            PrimeFaces.locales ['fr'] = {
+                closeText: 'Fermer',
+                prevText: 'Précédent',
+                nextText: 'Suivant',
+                currentText: 'Aujourd\'hui',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                weekHeader: 'Semaine',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix:'',
+                timeOnlyTitle: 'Choisir l\'heure',
+                timeText: 'Heure',
+                hourText: 'Heures',
+                minuteText: 'Minutes',
+                secondText: 'Secondes',
+                currentText: 'Maintenant',
+                ampm: false,
+                month: 'Mois',
+                week: 'Semaine',
+                day: 'Jour',
+                allDayText: 'Toute la journée'
+            };
+            
+            PrimeFaces.locales ['ar'] = {
+                closeText: 'إغلق',
+                prevText: 'إلى الخلف',
+                nextText: 'إلى الأمام',
+                currentText: 'التاريخ الحالي',
+                monthNames: ['يناير', ' فبراير', ' مارس', ' ابريل', ' مايو', ' يونيو', ' يوليو', ' أغسطس', ' سبتمبر', ' أكتوبر', 'نوفمبر', ' ديسمبر ' ],
+                monthNamesShort: ['يناير', ' فبراير', ' مارس', ' ابريل', ' مايو', ' يونيو', ' يوليو', ' أغسطس', ' سبتمبر', ' أكتوبر', 'نوفمبر', ' ديسمبر ' ],
+                dayNames: ['يوم الأحد‎', 'يوم الإثنين‎', 'يوم الثلاثاء‎', '‏يوم الأَرْبعاء‎', '‏يوم الخَمِيس‎', 'يوم الجُمْعَة‎‎', 'يوم السَّبْت'],
+                dayNamesShort: ['الأحد‎', 'الإثنين‎', 'الثلاثاء‎', 'الأَرْبعاء‎', 'الخَمِيس‎', 'الجُمْعَة‎‎', 'السَّبْت'],
+                dayNamesMin: ['الأحد‎', 'الإثنين‎', 'الثلاثاء‎', 'الأَرْبعاء‎', 'الخَمِيس‎', 'الجُمْعَة‎‎', 'السَّبْت'],
+                weekHeader: 'الأسبوع',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix:'' ,
+                timeOnlyTitle: 'الوقت فقط' ,
+                timeText: 'الوقت' ,
+                hourText: 'ساعة',
+                minuteText: 'دقيقة',
+                secondText: 'ثانية',
+                ampm: false,
+                month: 'الشهر',
+                week: 'الأسبوع',
+                day: 'اليوم',
+                allDayText: 'سائراليوم'
+
+            };                   
+            if ($.blockUI) {
+                $.blockUI.defaults.overlayCSS.opacity=0;
+                $.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
+            }
+        </script>
+        <b:scrollUp distance="200" animation="fade" text="" scrollTitle="false" name="bsfscroll" />
+
+        <ui:insert name="nbtop">
+            <ui:include src="/applayout/navbartop.xhtml" />
+        </ui:insert>
+        <style>
+            .container {
+                margin-right: auto;
+                margin-left: auto;
+            }
+        </style>
+        <b:container>
+            <ui:insert name="content" />
+        </b:container>
+
+        <ui:insert name="nbtop">
+            <ui:include src="/applayout/navbarbottom.xhtml" />
+        </ui:insert>
+
+    </h:body>
+</html>

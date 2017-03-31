@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition template="/applayout/template.xhtml">
+
+        <ui:define name="title">
+            Gestion des nomenclatures
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="form">
+                <b:well>
+                    <b:row styleClass="show-grid">
+                        <b:column  span="4">
+                            <b:panel title="Liste des articles" collapsible="false" >    
+                                <!--
+                                                        <b:dataTable value="" var="" lang="fr" scrollCollapse="true" scrollX="true">
+                                                            <b:dataTableColumn label="Code" value="" />
+                                                            <b:dataTableColumn label="Designation" value="" />
+                                                        </b:dataTable>-->
+                                <table>
+                                    <th>
+                                        <h:outputLabel  value="Code:"></h:outputLabel>
+                                        <b:inputText  placeholder="Recherche" ></b:inputText>
+                                    </th>
+                                    <th>
+                                        <p:commandButton icon="ui-icon-search" style="margin-top: 15px;"/>
+                                    </th>
+
+                                </table>
+                                <p:dataTable value="#{articleBean.listeArticles}" var="ar" scrollable="true" scrollWidth="90%" scrollHeight="100" style="margin-top: 4px;">
+                                    <p:column width="50px;">
+                                        <p:commandButton id="grow" action="#{nomenclatureBean.selectArticle(ar)}" update="@form" icon="ui-icon-search" style="text-align: center;"></p:commandButton>
+                                        <p:tooltip id="toolTipGrow" for="grow" value="Selectionner"
+                                                   showEffect="clip" hideEffect="explode" />
+                                    </p:column>
+                                    <p:column headerText="Code">
+                                        <h:outputText value="#{ar.ordercode}" />
+                                    </p:column>
+
+                                    <p:column headerText="Désignation">
+                                        <h:outputText value="#{ar.nomarticle}"/>
+                                    </p:column>
+                                    <p:column width="100px;">
+                                        <p:commandButton title="Supprimer" icon="ui-icon-trash"> </p:commandButton>
+                                        <p:commandButton title="Imprimer" icon="ui-icon-print"></p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </b:panel>
+                        </b:column>
+                        <b:column span="8">
+                            <b:column span="12">
+                                <b:panel rendered="#{nomenclatureBean.article.codearticle!=null}" title="Produit (#{nomenclatureBean.article.ordercode} : #{nomenclatureBean.article.nomarticle})" collapsible="false" > 
+                                    <b:row>
+                                        <b:column span="3">
+                                            <h:outputLabel  value="Code nomenclature :"></h:outputLabel>
+                                            <b:inputText   value="#{nomenclatureBean.nomenclature.code}"></b:inputText>  
+                                            
+                                            <h:outputLabel value="Type :"></h:outputLabel>
+                                              <b:selectOneMenu value="#{nomenclatureBean.nomenclature.typenomenclature}"  >
+                                                <f:selectItem itemLabel="Nomenclature d'emballage" itemValue="1"/>
+                                                <f:selectItem itemLabel="Nomenclature de production" itemValue="2"/>
+                                            </b:selectOneMenu>
+                                        </b:column>
+                                         <b:column span="4">
+                                            <h:outputLabel value="Article "></h:outputLabel>
+                                            <b:inputText value="#{nomenclatureBean.nomenclature.article}" disabled="true"></b:inputText> 
+                                            <h:outputLabel  value="Date creation :"></h:outputLabel>
+                                            <p:calendar value="#{nomenclatureBean.nomenclature.datecreation}" pattern="dd/MM/yyyy"/>
+                                           </b:column> 
+                                        <b:column span="3">
+                                             <h:outputLabel value="Observation :" ></h:outputLabel>
+                                            <b:inputTextarea   value="#{nomenclatureBean.nomenclature.observation}" rows="1"/> 
+                                            <h:panelGrid columns="2" style="margin-bottom:60px" >
+                                                <h:outputLabel value="CBN :" ></h:outputLabel>
+                                                <p:selectOneRadio value="#{nomenclatureBean.nomenclature.cbn}" style="margin-left: 20px;">
+                                                    <f:selectItem itemLabel="&nbsp;Oui&nbsp;&nbsp;&nbsp;" itemValue="oui" />
+                                                    <f:selectItem itemLabel="&nbsp;Non" itemValue="non"/> 
+                                                </p:selectOneRadio> 
+                                            </h:panelGrid>
+                                            </b:column> 
+                                         <p:commandButton style="margin: 2px; margin-top: 25px;width: 150px; " action="#{nomenclatureBean.create()}" value="Ajouter" ajax="false" icon="ui-icon-circle-plus"/>
+                                        <p:commandButton style="margin: 2px; width: 150px;" action="#{nomenclatureBean.init()}"  value="Annuler" ajax="false" icon="ui-icon-circle-close"/>
+                                        <p:commandButton style="margin: 2px; width: 150px;" action="#{nomenclatureBean.remove()}" value="Supprimer" ajax="false" icon="ui-icon-circle-minus"/>
+                                    </b:row>
+                                </b:panel> 
+                            </b:column>
+                            <b:row styleClass="show-grid">
+                                <b:column span="3" style="padding-left:  30px ;">
+                                    <b:panel title="Lignes" collapsible="false"> 
+                                        <h:outputLabel  value="Composant :"></h:outputLabel>
+                                        <b:inputText  value="#{nomenclatureBean.ligneNomenclature.code}" ></b:inputText>
+                                        <h:outputLabel value="Coefficient :"></h:outputLabel>
+                                        <b:inputText  value="#{nomenclatureBean.ligneNomenclature.coefficient}" ></b:inputText>
+                                        <h:outputLabel value="Poids :"></h:outputLabel>
+                                        <b:inputText  value="#{nomenclatureBean.ligneNomenclature.poids}" ></b:inputText>
+                                        <h:outputLabel value="Longueur :"></h:outputLabel>
+                                        <b:inputText  value="#{nomenclatureBean.ligneNomenclature.longueur}" ></b:inputText>
+
+                                        <p:commandButton   style="margin: 2px;" action="#{nomenclatureBean.createLignenomenclature()}" update="@form"  ajax="false" title="Ajouter" icon="ui-icon-circle-plus"/>                
+                                        <p:commandButton  style="margin: 2px;" action="#{nomenclatureBean.removeLignenomenclature()}" update="@form"  ajax="false" title="Supprimer" icon="ui-icon-circle-close"/>
+                                        <p:commandButton id="grow"  style="margin: 2px;" action="#{nomenclatureBean.initLignenomenclature()}" update="@form"  ajax="false" icon="ui-icon-circle-minus"/>
+                                        <p:tooltip id="toolTipGrow" for="grow" value="Annuler"
+                                                   showEffect="clip" hideEffect="explode"/>
+
+                                    </b:panel> 
+                                </b:column>
+                                <b:column  span="9"  style="padding-right: 30px; ">
+                                    <b:panel title="Liste des lignes nomenclatures" collapsible="false">    
+
+                                        <b:dataTable value="#{nomenclatureBean.listeLignenomenclature}"  var="l" lang="fr" scrollCollapse="true" scrollX="true">
+                                            <b:dataTableColumn value="" label="" style="text-align: center;">
+                                                <p:commandButton icon="ui-icon-search" onclick="ajax:nomenclatrueBean.selectLignenomenclature(l)}" update="@form"></p:commandButton>
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn label="Code Composant" value="#{l.code}" />
+                                            <b:dataTableColumn label="Coefficient" value="#{l.coefficient}" />
+                                            <b:dataTableColumn label="Poids" value="#{l.poids}" />
+                                            <b:dataTableColumn label="Longueur" value="#{l.longueur}" />
+                                        </b:dataTable>
+
+                                    </b:panel>
+                                </b:column>
+                            </b:row>
+                        </b:column>
+
+                    </b:row>  
+
+
+                </b:well>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>
+

@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <!--
+        xmlns="http://xmlns.jcp.org/jsf/html"
+        -->
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>
+            <ui:insert name="title">Titre par défaut</ui:insert>
+        </title>
+    </h:head>
+    <h:body style="padding-top: 60px;padding-bottom: 80px;">
+        <!--    <script type="text/javascript" src="js/shCore.js"/>
+                <script type="text/javascript" src="js/shBrushCss.js"/>
+                <script type="text/javascript" src="js/shBrushXml.js"/>
+                <script type="text/javascript" src="js/shBrushJava.js"/>
+                <script type="text/javascript" src="js/shBrushGroovy.js"/>
+                <script type="text/javascript" src="js/shBrushJScript.js"/>
+                <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"/>
+                <script type="text/javascript" src="js/moment.min.js"/>
+        
+                <script type="text/css" src="css/shCore.css"/>
+                <script type="text/css" src="css/shCoreEclipse.css"/>
+        -->
+        <script type="text/css" src="css/spark-css.css"/>
+        <script type="text/javascript" src="spark-js/javaScript.js"/>
+
+        <script type="text/javascript">
+            function rechercheDynamicParam(inp, val){
+                var texte = $('[id$='+inp+']').val();
+                var texteUpper = texte.toUpperCase();
+                var texteLower = texte.toLowerCase();
+                $('div[id$='+val+'] table tbody tr').hide();
+                $('div[id$='+val+'] table tbody tr'+":contains-ci('"+texte+"')").show();
+                $('div[id$='+val+'] table tbody tr'+":contains-ci('"+texteUpper+"')").show();
+                $('div[id$='+val+'] table tbody tr'+":contains-ci('"+texteLower+"')").show();
+                $('div[id$='+val+'] table tbody tr'+":contains-ci('"+texteMajuscule(texte)+"')").show();
+            }
+
+            function rechercheDynamicHTable(inp, val){
+                var texte = $('[id$='+inp+']').val();
+                var texteUpper = texte.toUpperCase();
+                var texteLower = texte.toLowerCase();
+                $('[id$='+val+'] tbody tr').hide();
+                $('[id$='+val+'] tbody tr'+":contains-ci('"+texte+"')").show();
+                $('[id$='+val+'] tbody tr'+":contains-ci('"+texteUpper+"')").show();
+                $('[id$='+val+'] tbody tr'+":contains-ci('"+texteLower+"')").show();
+                $('[id$='+val+'] tbody tr'+":contains-ci('"+texteMajuscule(texte)+"')").show();
+            }
+
+            $.extend($.expr[":"], 
+            {
+                "contains-ci": function(elem, i, match, array){
+                    return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                }
+            });
+        </script>        
+        <script type="text/javascript">
+            PrimeFaces.locales ['fr'] = {
+                closeText: 'Fermer',
+                prevText: 'Précédent',
+                nextText: 'Suivant',
+                currentText: 'Aujourd\'hui',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                weekHeader: 'Semaine',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix:'',
+                timeOnlyTitle: 'Choisir l\'heure',
+                timeText: 'Heure',
+                hourText: 'Heures',
+                minuteText: 'Minutes',
+                secondText: 'Secondes',
+                currentText: 'Maintenant',
+                ampm: false,
+                month: 'Mois',
+                week: 'Semaine',
+                day: 'Jour',
+                allDayText: 'Toute la journée'
+            };
+            
+            PrimeFaces.locales ['ar'] = {
+                closeText: 'إغلق',
+                prevText: 'إلى الخلف',
+                nextText: 'إلى الأمام',
+                currentText: 'التاريخ الحالي',
+                monthNames: ['يناير', ' فبراير', ' مارس', ' ابريل', ' مايو', ' يونيو', ' يوليو', ' أغسطس', ' سبتمبر', ' أكتوبر', 'نوفمبر', ' ديسمبر ' ],
+                monthNamesShort: ['يناير', ' فبراير', ' مارس', ' ابريل', ' مايو', ' يونيو', ' يوليو', ' أغسطس', ' سبتمبر', ' أكتوبر', 'نوفمبر', ' ديسمبر ' ],
+                dayNames: ['يوم الأحد‎', 'يوم الإثنين‎', 'يوم الثلاثاء‎', '‏يوم الأَرْبعاء‎', '‏يوم الخَمِيس‎', 'يوم الجُمْعَة‎‎', 'يوم السَّبْت'],
+                dayNamesShort: ['الأحد‎', 'الإثنين‎', 'الثلاثاء‎', 'الأَرْبعاء‎', 'الخَمِيس‎', 'الجُمْعَة‎‎', 'السَّبْت'],
+                dayNamesMin: ['الأحد‎', 'الإثنين‎', 'الثلاثاء‎', 'الأَرْبعاء‎', 'الخَمِيس‎', 'الجُمْعَة‎‎', 'السَّبْت'],
+                weekHeader: 'الأسبوع',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix:'' ,
+                timeOnlyTitle: 'الوقت فقط' ,
+                timeText: 'الوقت' ,
+                hourText: 'ساعة',
+                minuteText: 'دقيقة',
+                secondText: 'ثانية',
+                ampm: false,
+                month: 'الشهر',
+                week: 'الأسبوع',
+                day: 'اليوم',
+                allDayText: 'سائراليوم'
+
+            };                   
+            if ($.blockUI) {
+                $.blockUI.defaults.overlayCSS.opacity=0;
+                $.blockUI.defaults.message='<h1><img src="../javax.faces.resource/images/waitcursor.gif.jsf?ln=bsf" /></h1>';
+            }
+        </script>
+        <style type="text/css">
+            .stylepopup     .ui-widget-header {
+                background: #F0F0F0;
+                color: black;
+                font-weight: bold;
+                border-color: transparent;
+            }
+            .stylepopupAlerte     .ui-widget-header {
+                background: #fe8c8c;
+                color: black;
+                font-weight: bold;
+                border-color: transparent;
+            }
+            textarea, input[type="text"], input[type="password"], select {
+                color: #000 !important;
+                padding: 0px 0px 0px 0px !important;
+                font-family: calibri !important;
+                font-size: 15px !important;
+                font-family: normal !important;
+                /*height: 32px !important;*/
+            }
+            input[type="text"], input[type="password"], select {
+                height: 32px !important;
+            }
+
+            .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield{
+                color: #000 !important;
+                -webkit-box-shadow: inset 0 0px 0px #f0f0f0;
+                box-shadow: inset 0 0px 0px #f0f0f0;
+                padding: 0px 0px 0px 0px !important;
+                font-family: calibri !important;
+                font-size: 15px !important;
+                font-family: normal !important;
+                -webkit-border-radius: 4px;
+                height: 32px !important;
+                width: 100%;
+            }
+            textarea{
+                height: 50px !important;
+            }
+            .css-titre{
+                font-weight: bold;
+                font-size: 18px;
+                font-family: Arial;
+                color: #000;
+            }
+            .navbar-fixed-top, .navbar-fixed-bottom{
+                border-color: #000;
+            }
+            .css-h-select{
+                border-color: #cccccc;
+                width: 100%;
+                -webkit-border-radius: 5px;
+                margin-bottom: 10px;
+            }
+        </style>
+        <b:scrollUp distance="200" animation="fade" text="" name="bsfscroll" />
+
+        <ui:insert name="nbtop">
+            <ui:include src="/applayout/navbartop.xhtml" />
+        </ui:insert>
+
+        <b:container>
+            <!--<div class="css-titre">-->
+            <h:panelGroup layout="block" styleClass="css-titre">
+                <ui:insert name="title" />
+            </h:panelGroup>
+            <!--</div>-->
+        </b:container>
+
+        <b:container style="margin-top: 10px;width: 97%" fluid="true" >
+            <ui:insert name="content" />
+            
+        </b:container>
+
+        <ui:insert name="nbtop">
+            <ui:include src="/applayout/navbarbottom.xhtml" />
+        </ui:insert>
+    </h:body>
+</html>
+

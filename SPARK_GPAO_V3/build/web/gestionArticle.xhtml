@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/applayout/template.xhtml">
+        <ui:define name="title">
+            Gestion des articles
+        </ui:define>
+        <ui:define name="content">
+            <h:form>
+                <style type="text/css">
+                    input, select, textarea {
+                        font-family: inherit;
+                        font-size: inherit;
+                        line-height: inherit;
+                        display: block;
+                        width: 100%;
+                        height: 38px;
+                        padding: 8px 12px;
+                        font-size: 14px;
+                        line-height: 1.428571429;
+                        color: #555555;
+                        background-color: #fff;
+                        background-image: none;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                    }
+                    .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield {
+                        font-family: inherit;
+                        font-size: inherit;
+                        line-height: inherit;
+                        display: block;
+                        width: 100%;
+                        height: 38px;
+                        padding: 8px 12px;
+                        font-size: 14px;
+                        line-height: 1.428571429;
+                        color: #555555;
+                        background-color: #fff;
+                        background-image: none;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                    }
+                </style>
+                <p:growl life="5000" autoUpdate="true"/>
+                <b:well style="margin-top: 50px;" >
+                    <b:row styleClass="show-grid" style="color: black;">
+                        <b:column span="12">
+                            <b:column span="4">
+                                <b:panel title="Article" collapsible="false" > 
+                                    <b:column span="5">
+                                        <h:outputLabel  value="Code article "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.ordercode}"></b:inputText> 
+                                    </b:column> 
+                                    <b:column span="5">
+                                        <h:outputLabel value="Designation "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.nomarticle}"></b:inputText>
+                                    </b:column>
+                                     <b:column span="5">  
+                                        <h:outputLabel value="Longueur "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.longueur}"></b:inputText> 
+                                    </b:column>   
+                                    <b:column span="5">
+                                        <h:outputLabel value="Largeur "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.largeur}"></b:inputText> 
+                                    </b:column>
+                                    <b:column span="5">
+                                        <h:outputLabel value="Poids "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.poids}"></b:inputText> 
+                                    </b:column>
+                                    <b:column span="5">
+                                        <h:outputLabel value="Valeur par article "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.valeur}" disabled="true"></b:inputText> 
+                                    </b:column>
+                                    <b:column span="5">
+                                        <h:outputLabel value="Valeur de stock "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.valeurtotale}" disabled="true"></b:inputText> 
+                                    </b:column>
+                                    <b:column span="5">
+                                        <h:outputLabel value="Quantite en stock "></h:outputLabel>
+                                        <b:inputText  value="#{articleBean.article.quantiteenstock}" disabled="true"></b:inputText>
+                                    </b:column>
+                                    <b:column span="5">
+                                        <h:outputLabel value="Date creation "></h:outputLabel>
+                                        <p:calendar value="#{articleBean.article.datecreation}" pattern="dd/MM/yyyy"/>
+                                    </b:column>  
+                                    <b:column span="10">
+                                        <h:outputLabel value="Observation " ></h:outputLabel>
+                                        <b:inputTextarea  value="#{articleBean.article.description}" rows="4"/> 
+                                    </b:column>
+                                    <b:column span="12">
+                                        <p:commandButton style="margin: 2px; margin-top: 25px;width: 130px; " action="#{articleBean.createEditArticle()}" update="@form" value="Enregistrer" icon="ui-icon-circle-plus"/>
+                                        <p:commandButton style="margin: 2px; width: 130px;" action="#{articleBean.remove()}" update="@form" value="Supprimer" icon="ui-icon-circle-close"/>
+                                        <p:commandButton style="margin: 2px; width: 130px;" action="#{articleBean.init()}" update="@form" value="Annuler" icon="ui-icon-circle-minus"/> 
+                                    </b:column>
+                                </b:panel> 
+                            </b:column>
+                            <b:column  span="8" style="padding-right: 30px; ">
+                                <b:panel title="Liste des articles" collapsible="false">    
+                                    <b:dataTable value="#{articleBean.listeArticles}"  var="ar" lang="fr" scrollCollapse="true" scrollX="true">
+                                        <b:dataTableColumn value="" label="" style="text-align: center; width:20px;">
+                                            <f:facet name="header">
+                                                <h:outputText value=""/>
+                                            </f:facet>
+                                            <b:commandButton value="" onclick="ajax:articleBean.select(ar)" update="@form" icon="glyphicon glyphicon-search"/>
+                                        </b:dataTableColumn>
+                                        <b:dataTableColumn label="Code article" value="#{ar.ordercode}" style="width: 100px"/>
+                                        <b:dataTableColumn label="Designation" value="#{ar.nomarticle}" />
+                                        <b:dataTableColumn label="Poids" value="#{ar.poids}" />
+                                        <b:dataTableColumn label="Largeur" value="#{ar.largeur}" />
+                                        <b:dataTableColumn label="Quantite en stock" value="#{ar.quantiteenstock}" style="width: 120px"/>
+                                        <b:dataTableColumn label="Valeur par article" value="#{ar.valeur}" style="width: 120px"/>
+                                        <b:dataTableColumn label="Valeur de stock" value="#{ar.valeurtotale}" style="width: 120px"/>
+                                        <b:dataTableColumn label="Longueur" value="#{ar.longueur}" />
+                                        <b:dataTableColumn label="Date creation" value="#{ar.datecreation}" style="width: 110px"/>
+                                        <b:dataTableColumn label="Observation" value="#{ar.description}" />
+                                    </b:dataTable>
+                                </b:panel>
+                            </b:column>
+                        </b:column>
+                    </b:row>
+                </b:well>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Gestion Societe</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl life="5000" autoUpdate="true"/>
+            <b:well>  
+                <b:row>
+                    <b:column span="12">
+                        <b:column span="6">
+                            <b:panel title="Poste de travail" collapsible="false"> 
+                                <b:column span="6">
+                                    <h:outputLabel  value="Code Poste de Travail :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.postetravail.ordercode}"></b:inputText>  
+                                </b:column>
+                                <b:column span="6">
+                                    <h:outputLabel value="Code Chaine :"></h:outputLabel>
+                                    <h:selectOneMenu style="width: 100%; height: 35px;-webkit-border-radius: 5px" value="#{structureBean.postetravail.codechaine}">
+                                        <f:selectItems value="#{chaineBean.getListeChaine(true)}"/>
+                                    </h:selectOneMenu>
+                                </b:column>
+                              
+                                <b:column span="6">
+                                    <h:outputLabel value="Capacité :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.postetravail.capacite}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Désignation :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.postetravail.designation}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Employé(e) :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.postetravail.employe}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Type de Travail :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.postetravail.typedetravail}" ></b:inputText>
+                                </b:column> 
+                                
+                                <b:column span="6">
+                                    <h:outputLabel value="Date de Création  :"></h:outputLabel>
+                                    <p:calendar value="#{structureBean.postetravail.datecreation}" pattern="dd/MM/yyyy"/>
+                                </b:column> 
+                                <b:column span="12" style="margin-top: 5px;">
+                                    <p:commandButton  style="margin: 2px;" action="#{structureBean.createEditPostetravail()}" update="@form" title="Enregistrer" value="Enregistrer"  icon="ui-icon-circle-plus"/>                
+                                    <p:commandButton style="margin: 2px;" action="#{structureBean.removePostetravail()}" update="@form" title="Supprimer" value="Supprimer" icon="ui-icon-circle-close"/>
+                                    <p:commandButton id="groa" style="margin: 2px;" action="#{structureBean.initPostetravail()}" update="@form" value="Annuler" icon="ui-icon-circle-minus"/>
+                                    <p:tooltip id="toolTipGrow" for="groa" value="Annuler"
+                                               showEffect="clip" hideEffect="explode"/>
+
+                                </b:column>          
+                            </b:panel> 
+                        </b:column>
+                        <b:column  span="6">
+                            <b:panel title="Liste des postes de travail" collapsible="false" >    
+
+                                <b:dataTable id="example" value="#{structureBean.listePostetravail}" var="pt" lang="fr" scrollCollapse="true" scrollX="true">
+                                    <b:dataTableColumn>
+                                       <b:commandButton value="" icon="glyphicon glyphicon-search" onclick="ajax:structureBean.selectPostetravail(pt)}" update="@form"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn label="Code Poste de Travail" value="#{pt.codepostetravail}" style="width: 160px" />
+                                    <b:dataTableColumn label="Code Chaine" value="#{pt.codechaine}" style="width: 100px"/>
+                                    <b:dataTableColumn label="Capacité" value="#{pt.capacite}" />
+                                    <b:dataTableColumn label="Désignation" value="#{pt.designation}" />
+                                    <b:dataTableColumn label="Date de Création " value="#{pt.datecreation}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Employé(e)" value="#{pt.employe}" />
+                                    <b:dataTableColumn label="Type de Travail" value="#{pt.typedetravail}" style="width: 120px"/>
+                                    
+                                </b:dataTable>
+
+                            </b:panel>
+                        </b:column>
+
+                    </b:column>
+                </b:row>
+            </b:well>  
+        </h:form>
+    </h:body>
+</html>
+

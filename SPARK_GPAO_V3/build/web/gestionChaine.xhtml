@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Gestion Societe</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl life="5000" autoUpdate="true"/>
+            <b:well>  
+                <b:row>
+                    <b:column span="12">
+                        <b:column span="6">
+                            <b:panel title="Chaine" collapsible="false"> 
+                                <b:column span="6">
+                                    <h:outputLabel  value="Code Chaine"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.chaine.ordercode}"></b:inputText>  
+                                </b:column>
+                                <b:column span="6">
+                                    <h:outputLabel value="Code Atelier :"></h:outputLabel>
+                                    <b:selectOneMenu value="#{structureBean.chaine.codeatelier}">
+                                        <f:selectItems value="#{atelierBean.getListeAtelier(true)}"/>
+                                    </b:selectOneMenu>
+                                </b:column>            
+                                <b:column span="6">
+                                    <h:outputLabel value="Désignation :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.chaine.designation}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Nombre des Machines :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.chaine.nombredemachines}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Code Employé(e) :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.chaine.codeemploye}" ></b:inputText>
+                                </b:column> 
+
+                                <b:column span="6">
+                                    <h:outputLabel value="Nombre des Employé(s) :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.chaine.nombredemployes}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Activite :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.chaine.activite}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Numéro dans l'atelier :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.chaine.numerodanslatelier}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Date de Mise à Jour  :"></h:outputLabel>
+                                    <p:calendar value="#{structureBean.chaine.dateupdate}" pattern="dd/MM/yyyy"/>
+                                </b:column> 
+                                <b:column span="12" style="margin-top: 5px;">
+                                    <p:commandButton  style="margin: 2px;" action="#{structureBean.createEditChaine()}" update="@form" title="Enregistrer" value="Enregistrer"  icon="ui-icon-circle-plus"/>                
+                                    <p:commandButton style="margin: 2px;" action="#{structureBean.removeChaine()}" update="@form" title="Supprimer" value="Supprimer" icon="ui-icon-circle-close"/>
+                                    <p:commandButton id="groa" style="margin: 2px;" action="#{structureBean.initChaine()}" update="@form" value="Annuler" icon="ui-icon-circle-minus"/>
+                                    <p:tooltip id="toolTipGrow" for="groa" value="Annuler"
+                                               showEffect="clip" hideEffect="explode" position="left"/>
+
+                                </b:column>          
+                            </b:panel> 
+                        </b:column>
+                        <b:column  span="6">
+                            <b:panel title="Liste des Chaines" collapsible="false" >    
+
+                                <b:dataTable id="example" value="#{structureBean.listeChaine}" var="c" lang="fr" scrollCollapse="true" scrollX="true">
+                                    <b:dataTableColumn>
+                                         <b:commandButton value="" icon="glyphicon glyphicon-search" onclick="ajax:structureBean.selectChaine(c)}" update="@form"/>
+                                    </b:dataTableColumn> 
+                                    <b:dataTableColumn label="Code chaine" value="#{c.codechaine}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Code atelier" value="#{c.codeatelier}" style="width: 120px" />
+                                    <b:dataTableColumn label="Designation " value="#{c.designation}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Nombre des machines" value="#{c.nombredemachines}" style="width: 170px"/>
+                                    <b:dataTableColumn label="Code employee" value="#{c.codeemploye}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Nombre des employee" value="#{c.nombredemployes}" style="width: 170px"/>
+                                    <b:dataTableColumn label="Activite " value="#{c.activite}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Numero dans l'atelier" value="#{c.numerodanslatelier}" style="width: 170px"/>
+                                    <b:dataTableColumn label="Date de Mise à Jour" value="#{c.dateupdate}" style="width: 120px"/>
+                                </b:dataTable>
+
+                            </b:panel>
+                        </b:column>
+
+                    </b:column>
+                </b:row>
+            </b:well>  
+        </h:form>
+    </h:body>
+</html>
+

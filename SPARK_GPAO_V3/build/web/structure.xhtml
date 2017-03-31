@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <title>Structure</title>
+
+    <ui:composition template="/applayout/template.xhtml">
+
+        <ui:define name="title">
+            Structure
+        </ui:define>
+
+        <ui:define name="content">
+            <b:well>
+                <p:dock position="top" itemWidth="100">
+                    <p:menuitem value="Societe" icon="../resources/images/icons/home.png"  url="#" onclick="javascript:open_infosSociete();" />
+                    <p:menuitem value="Usine" icon="../resources/images/icons/home.png" url="#" onclick="javascript:open_infosUsine();"/>
+                    <p:menuitem value="Atelier" icon="../resources/images/icons/home.png" url="#" onclick="javascript:open_infosAtelier();"/>
+                    <p:menuitem value="Chaine" icon="../resources/images/icons/home.png" url="#" onclick="javascript:open_infosChaine();"/>
+                    <p:menuitem value="Poste de Travail" icon="../resources/images/icons/home.png" url="#" onclick="javascript:open_infosPost();"/> 
+                </p:dock>  
+            </b:well>
+            <script type="text/javascript">
+                /**/
+                function open_infosSociete()
+                {
+                    window.open('gestionSociete.xhtml','achref','menubar=no, scrollbars=no,left=50, top=150, width=1300, height=540');
+                }
+                /**/
+                function open_infosUsine()
+                {
+                    window.open('gestionUsine.xhtml','achref','menubar=no, scrollbars=no,left=50, top=150, width=1300, height=540');
+                }
+                /**/
+                function open_infosChaine()
+                {
+                    window.open('gestionChaine.xhtml','achref','menubar=no, scrollbars=no, left=50, top=120, width=1300, height=615');
+                }
+                /**/
+                function open_infosPost()
+                {
+                    window.open('gestionPostTravail.xhtml','achref','menubar=no, scrollbars=no, left=50, top=150, width=1300, height=540');
+                }
+                /**/
+                function open_infosAtelier()
+                {
+                    window.open('gestionAtelier.xhtml','achref','menubar=no, scrollbars=no, left=50, top=150, width=1300, height=540');
+                }
+                /**/
+            </script>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <title>Gestion des machines</title>
+    <ui:composition template="/applayout/template.xhtml">
+        <ui:define name="title">
+            Gestion des machines
+
+        </ui:define>
+        <ui:define name="content">
+            <h:form>
+                <p:growl life="5000" autoUpdate="true"/>
+                <b:well>
+                    <b:row>
+                        <b:column span="12">
+                            <b:column span="5">
+                                <b:panel title="Machine" collapsible="false"> 
+                                    <b:column span="5">
+                                        <h:outputLabel  value="Code machine :"></h:outputLabel>
+                                        <b:inputText  value="#{machineBean.machine.ordercode}"></b:inputText>  
+                                    </b:column>
+                                    <b:column span="5">
+                                    <h:outputLabel value="Code Atelier :"></h:outputLabel>
+                                    <b:selectOneMenu value="#{machineBean.machine.codeatelier}">
+                                        <f:selectItems value="#{atelierBean.getListeAtelier(true)}"/>
+                                    </b:selectOneMenu>
+                                </b:column>  
+                                    <b:column span="5">
+                                        <h:outputLabel value="Designation :"></h:outputLabel>
+                                        <b:inputText  value="#{machineBean.machine.designation}" ></b:inputText>
+                                    </b:column>          
+                                    <b:column span="5">
+                                        <h:outputLabel value="Type :"></h:outputLabel>
+                                        <b:inputText  value="#{machineBean.machine.type}" ></b:inputText>
+                                    </b:column> 
+                                    <b:column span="5">
+                                        <h:outputLabel value="Etape:"></h:outputLabel>
+                                        <b:inputText  value="#{machineBean.machine.etat}" ></b:inputText>
+                                    </b:column> 
+                                    <b:column span="5">
+                                        <h:outputLabel value="Cout d'achat:"></h:outputLabel>
+                                        <b:inputText  value="#{machineBean.machine.coutachat}" ></b:inputText>
+                                    </b:column> 
+                                    <b:column span="5">
+                                        <h:outputLabel value="Marque :"></h:outputLabel>
+                                        <b:inputText  value="#{machineBean.machine.marque}" ></b:inputText>
+                                    </b:column> 
+                                    <b:column span="5">
+                                        <h:outputLabel value="Referance:"></h:outputLabel>
+                                        <b:inputText  value="#{machineBean.machine.reference}" ></b:inputText>
+                                    </b:column> 
+                                    <b:column span="5">
+                                        <h:outputLabel value="Date d'acquisition :"></h:outputLabel>
+                                        <p:calendar value="#{machineBean.machine.dateacquisition}" pattern="dd/MM/yyyy"/>
+                                    </b:column> 
+                                    <b:column span="12">
+                                        <p:commandButton  style="margin: 2px;" title="Enregistrer" value="Enregistrer" action="#{machineBean.createEditMachine()}" update="@form" icon="ui-icon-circle-plus"/>                
+                                        <p:commandButton style="margin: 2px;" title="Supprimer" value="Supprimer" action="#{machineBean.remove()}" update="@form" icon="ui-icon-circle-close"/>
+                                        <p:commandButton id="groa" style="margin: 2px;" value="Annuler" action="#{machineBean.init()}" update="@form" icon="ui-icon-circle-minus"/>
+                                        <p:tooltip id="toolTipGrow" for="groa" value="Annuler"
+                                                   showEffect="clip" hideEffect="explode" />
+                                    </b:column>          
+                                </b:panel> 
+                            </b:column>
+                            <b:column  span="7">
+                                <b:panel title="Liste des machines" collapsible="false" >    
+
+                                    <b:dataTable id="example" value="#{machineBean.listeMachine}" var="m" lang="fr" scrollCollapse="true" scrollX="true">
+                                        <b:dataTableColumn label="" value="">
+                                            <f:facet name="header">
+                                            <h:outputText value=""/>
+                                        </f:facet>
+                                        <b:commandButton value="" icon="glyphicon glyphicon-search" onclick="ajax:machineBean.select(m)}" update="@form"/>
+                                        </b:dataTableColumn>
+                                        <b:dataTableColumn label="Code machine" value="#{m.code}" style="width: 120px"  />
+                                        <b:dataTableColumn label="Code Atelier" value="#{m.codeatelier}" />
+                                        <b:dataTableColumn label="Designation" value="#{m.designation}" />
+                                        <b:dataTableColumn label="Type" value="#{m.type}" />
+                                        <b:dataTableColumn label="Etape" value="#{m.etat}" />
+                                        <b:dataTableColumn label="Date d'acquisition " value="#{m.dateacquisition}" style="width: 130px" />
+                                        <b:dataTableColumn label="Cout d'achat" value="#{m.coutachat}" style="width: 120px"  />
+                                        <b:dataTableColumn label="Marque" value="#{m.marque}" />
+                                        <b:dataTableColumn label="Referance" value="#{m.reference}" />
+                                    </b:dataTable>
+
+                                </b:panel>
+                            </b:column>
+
+                        </b:column>
+                    </b:row>
+
+                </b:well>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Gestion Usine</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <b:well>
+                <p:growl life="5000" autoUpdate="true"/>
+                <b:row>
+                    <b:column span="12">
+                        <b:column span="6">
+                            <b:panel title="Usine" collapsible="false"> 
+                                <b:column span="6">
+                                    <h:outputLabel  value="Code Usine :"></h:outputLabel>
+                                    <h:inputText disabled="#{structureBean.creerModifUsine==false}" style="width: 100%; height: 35px;-webkit-border-radius: 5px" value="#{structureBean.usine.codeusine}"/> 
+                                </b:column>
+                                <b:column span="6">
+                                    <h:outputLabel value="Code societe :"></h:outputLabel>
+                                    <h:selectOneMenu style="width: 100%; height: 35px;-webkit-border-radius: 5px" value="#{structureBean.usine.codecompta}">
+                                        <f:selectItems value="#{comptabiliteBean.getListeSocietes(true)}"/>
+                                    </h:selectOneMenu>
+                                </b:column>          
+                                <b:column span="6">
+                                    <h:outputLabel value="Désignation :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.usine.designation}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Adresse :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.usine.adresse}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Fax :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.usine.fax}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Tél :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.usine.telephone}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Activité :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.usine.activite}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Date de Création  :"></h:outputLabel>
+                                    <p:calendar value="#{structureBean.usine.datecreation}" pattern="dd/MM/yyyy"/>
+                                </b:column> 
+                                <b:column span="12" style="margin-top: 5px;">
+                                    <p:commandButton  style="margin: 2px;" title="Enregistrer" value="Enregistrer" action="#{structureBean.createEditUsine()}" update="@form" icon="ui-icon-circle-plus"/>                
+                                    <p:commandButton style="margin: 2px;" title="Supprimer" value="Supprimer" action="#{structureBean.removeUsine()}" update="@form" icon="ui-icon-circle-close"/>
+                                    <p:commandButton id="groa" style="margin: 2px;" value="Annuler" action="#{structureBean.initUsine()}" update="@form" icon="ui-icon-circle-minus"/>
+                                    <p:tooltip id="toolTipGrow" for="groa" value="Annuler"
+                                               showEffect="clip" hideEffect="explode"/>
+
+                                </b:column>          
+                            </b:panel> 
+                        </b:column>
+                        <b:column  span="6">
+                            <b:panel title="Liste des Usines" collapsible="false" >    
+
+                                <b:dataTable id="example" value="#{structureBean.listeUsine}" var="u" responsive="false" lang="fr" scrollCollapse="true" scrollX="true">
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Sélection"/>
+                                        </f:facet>
+                                        <b:commandButton value="" icon="glyphicon glyphicon-search" onclick="ajax:structureBean.selectUsine(u)}" update="@form"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Code Usine "/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.codeusine}"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Code Societe "/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.codecompta.nomdelasociete}"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Adresse"/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.adresse}"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Désignation"/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.designation}"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Date Création"/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.datecreation}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+1" locale="fr"/>
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Tél"/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.telephone}"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Fax"/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.fax}"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Activité"/>
+                                        </f:facet>
+                                        <h:outputText value="#{u.activite}"/>
+                                    </b:dataTableColumn>
+                                </b:dataTable>
+                            </b:panel>
+                        </b:column>
+
+                    </b:column>
+                </b:row>
+            </b:well>  
+        </h:form>
+    </h:body>
+</html>
+

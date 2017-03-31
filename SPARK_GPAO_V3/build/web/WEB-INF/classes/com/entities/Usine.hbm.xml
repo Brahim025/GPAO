@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 mars 2017 17:20:35 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.entities.Usine" table="USINE" schema="SPARK_GPAO_V3">
+        <id name="codeusine" type="string">
+            <column name="CODEUSINE" length="100" />
+            <!--<generator class="assigned" />-->
+        </id>
+<!--    <property name="codecompta" type="string">
+            <column name="CODECOMPTA" length="100" />
+        </property>-->
+        <many-to-one name="codecompta" lazy="false" class="com.entities.Comptabilite" fetch="join">
+            <column name="CODECOMPTA" length="100"></column>
+        </many-to-one>
+        
+<!--    <many-to-one name="" lazy="" class="" fetch="">
+            <column name="" length=""></column>
+        </many-to-one>
+        -->
+        <property name="ordercode" type="string">
+            <column name="ORDERCODE" length="100" />
+        </property>
+        <property name="designation" type="string">
+            <column name="DESIGNATION" length="100" />
+        </property>
+        <property name="datecreation" type="date">
+            <column name="DATECREATION" length="7" />
+        </property>
+        <property name="dateupdate" type="date">
+            <column name="DATEUPDATE" length="7" />
+        </property>
+        <property name="userupdate" type="string">
+            <column name="USERUPDATE" length="100" />
+        </property>
+        <property name="activite" type="string">
+            <column name="ACTIVITE" length="100" />
+        </property>
+        <property name="nombredemployes" type="big_decimal">
+            <column name="NOMBREDEMPLOYES" precision="22" scale="0" />
+        </property>
+        <property name="nombredemachines" type="big_decimal">
+            <column name="NOMBREDEMACHINES" precision="22" scale="0" />
+        </property>
+        <property name="nombredeatelier" type="big_decimal">
+            <column name="NOMBREDEATELIER" precision="22" scale="0" />
+        </property>
+        <property name="nombrdepostetravail" type="big_decimal">
+            <column name="NOMBRDEPOSTETRAVAIL" precision="22" scale="0" />
+        </property>
+        <property name="nombredechaine" type="big_decimal">
+            <column name="NOMBREDECHAINE" precision="22" scale="0" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="ADRESSE" length="100" />
+        </property>
+        <property name="fax" type="string">
+            <column name="FAX" length="100" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="TELEPHONE" length="100" />
+        </property>
+        <property name="numerodanslatelier" type="string">
+            <column name="NUMERODANSLATELIER" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

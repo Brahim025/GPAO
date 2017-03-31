@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <ui:composition template="/applayout/template.xhtml">
+        <ui:define name="title">
+            Gestion des articles
+        </ui:define>
+        <ui:define name="content">
+                
+        
+            <b:row styleClass="show-grid" style="margin-top: 100px;">
+                <b:column span="5">
+                    <b:panel  look="primary"> 
+                        <b:panelGrid colSpans="2,10" size="xs" >
+                            <h:outputLabel value="ID:"></h:outputLabel>
+                             <h:inputText id="ID:" class="form-control" value="#{articleBean.article.codearticle}" style="margin: 4px;"></h:inputText>
+
+
+                            <h:outputLabel value="Code :"></h:outputLabel>
+                            <h:inputText id="Code" class="form-control" value="#{articleBean.article.ordercode}" style="margin: 4px;"></h:inputText>
+                            
+                            <h:outputLabel value="Designation :"></h:outputLabel>
+                            <h:inputText id="Designation" class="form-control" value="#{articleBean.article.nomarticle}" style="margin: 4px;"></h:inputText>
+
+                            <h:outputLabel value="Valeur :"></h:outputLabel>
+                            <h:inputText id="Valeur" class="form-control" value="#{articleBean.article.valeur}" style="margin: 4px;"></h:inputText>
+
+
+
+                        </b:panelGrid> 
+                        <b:column col-md="12" style="text-align: right;">
+                            <h:commandButton value="Ajouter" class="btn btn-primary" style="margin: 3px;" action="#{articleBean.create()}" ></h:commandButton>
+                            <h:commandButton value="Supprimer" class="btn btn-primary" style="margin: 3px;" action="#{articleBean.remove()}"  ></h:commandButton>
+                            <h:commandButton value="Annuler" class="btn btn-primary" style="margin: 3px;" action="#{articleBean.init()}"></h:commandButton>
+                            <h:commandButton value="Modifier" class="btn btn-primary" style="margin: 3px;" action="#{articleBean.edit()}"></h:commandButton>
+                        </b:column>
+
+                    </b:panel>
+
+                </b:column>
+                <b:column span="6">
+                    <b:panel  look="primary">
+                        <b:dataTable value="#{articleBean.listeArticles}" var="article">
+                            <b:dataTableColumn value="#{article.codearticle}" label="Id"></b:dataTableColumn>
+                            <b:dataTableColumn value="#{article.ordercode}" label="Code"/>
+                             <b:dataTableColumn value="#{article.nomarticle}" label="Nom article"></b:dataTableColumn>
+                            <b:dataTableColumn value="#{article.valeur}" label="Valeur"/>
+                        </b:dataTable>
+                    </b:panel>
+                </b:column>
+          
+         </b:row>  
+        </ui:define>
+        
+    </ui:composition>
+     
+</html>
+
+
+ 

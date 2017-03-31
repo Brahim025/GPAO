@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Gestion Atelier</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl life="5000" autoUpdate="true"/>
+            <b:well>  
+                <b:row>
+                    <b:column span="12">
+                        <b:column span="6">
+                            <b:panel title="Atelier" collapsible="false"> 
+                                <b:column span="6">
+                                    <h:outputLabel  value="Code Atelier"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.ordercode}"></b:inputText>  
+                                </b:column>
+                                <b:column span="6">
+                                    <h:outputLabel value="Code Usine :"></h:outputLabel>
+                                    <b:selectOneMenu value="#{structureBean.atelier.codeusine}">
+                                        <f:selectItems value="#{usineBean.getListeUsines(true)}"/>
+                                    </b:selectOneMenu>
+                                </b:column>           
+                                <b:column span="6">
+                                    <h:outputLabel value="Designation :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.designation}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Code Employé(e) :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.codeemploye}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Chef :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.chef}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Type :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.type}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Emplacement :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.emplacement}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Nombre des Chaines :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.nombredechaines}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Activité :"></h:outputLabel>
+                                    <b:inputText  value="#{structureBean.atelier.activite}" ></b:inputText>
+                                    <h:outputLabel value="Date de Modification  :"></h:outputLabel>
+                                    <p:calendar value="#{structureBean.atelier.dateupdate}" pattern="dd/MM/yyyy" timeZone="GMT+1" locale="fr"/>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Commentaire :"></h:outputLabel>
+                                    <b:inputTextarea  value="#{structureBean.atelier.commentaire}" ></b:inputTextarea>
+                                </b:column> 
+                                <b:column span="12" style="margin-top: 5px;">
+                                    <p:commandButton  style="margin: 2px;" title="Enregistrer" value="Enregistrer" action="#{structureBean.createEditAtelier()}" update="@form"  icon="ui-icon-circle-plus"/>                
+                                    <p:commandButton style="margin: 2px;" title="Supprimer" action="#{structureBean.removeAtelier()}" update="@form"  value="Supprimer" icon="ui-icon-circle-close"/>
+                                    <p:commandButton id="groa" style="margin: 2px;" action="#{structureBean.initAtelier()}" update="@form"  value="Annuler" icon="ui-icon-circle-minus"/>
+                                    <p:tooltip id="toolTipGrow" for="groa" value="Annuler"
+                                               showEffect="clip" hideEffect="explode"/>
+                                </b:column>          
+                            </b:panel> 
+                        </b:column>
+                        <b:column  span="6">
+                            <b:panel title="Liste des Ateliers" collapsible="false" >    
+                                <b:dataTable id="example" value="#{structureBean.listeAtelier}" var="a" lang="fr" scrollCollapse="true" scrollX="true">
+                                    <b:dataTableColumn label="">
+                                        <b:commandButton value="" icon="glyphicon glyphicon-search" onclick="ajax:structureBean.selectAtelier(a)}" update="@form"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn label="Code Atelier" style="width: 100px">
+                                        <h:outputText value="#{a.codeatelier}"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn label="Code usine " value="#{a.codeusine.designation}" style="width: 100px"/>
+                                    <b:dataTableColumn label="Designation " value="#{a.designation}" />
+                                    <b:dataTableColumn label="Code employee " value="#{a.codeemploye}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Chef" value="#{a.chef}" />
+                                    <b:dataTableColumn label="Type" value="#{a.type}" />
+                                    <b:dataTableColumn label="Emplacement " value="#{a.emplacement}" />
+                                    <b:dataTableColumn label="Commentaire " value="#{a.commentaire}" style="width: 170px"/>
+                                    <b:dataTableColumn label="Date de Mise à Jour" value="#{a.dateupdate}" style="width: 120px"/>
+                                </b:dataTable>
+                            </b:panel>
+                        </b:column>
+                    </b:column>
+                </b:row>
+            </b:well>  
+        </h:form>  
+    </h:body>
+</html>
+

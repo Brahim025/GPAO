@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 mars 2017 17:20:35 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.entities.Atelier" table="ATELIER" schema="SPARK_GPAO_V3">
+        <id name="codeatelier" type="string">
+            <column name="CODEATELIER" length="100" />
+            <generator class="assigned" />
+        </id>
+         <many-to-one name="codeusine" lazy="false" class="com.entities.Usine" fetch="join">
+            <column name="CODEUSINE" length="100"></column>
+        </many-to-one>
+         <property name="ordercode" type="string">
+            <column name="ORDERCODE" length="100" />
+        </property>
+        <property name="chef" type="string">
+            <column name="CHEF" length="100" />
+        </property>
+        <property name="codeemploye" type="string">
+            <column name="CODEEMPLOYE" length="100" />
+        </property>
+        
+        <property name="designation" type="string">
+            <column name="DESIGNATION" length="100" />
+        </property>
+        <property name="emplacement" type="string">
+            <column name="EMPLACEMENT" length="100" />
+        </property>
+        <property name="chargehoraire" type="string">
+            <column name="CHARGEHORAIRE" length="100" />
+        </property>
+        <property name="dateupdate" type="date">
+            <column name="DATEUPDATE" length="7" />
+        </property>
+        <property name="userupdate" type="string">
+            <column name="USERUPDATE" length="100" />
+        </property>
+        <property name="activite" type="string">
+            <column name="ACTIVITE" length="100" />
+        </property>
+        <property name="sousactivites" type="string">
+            <column name="SOUSACTIVITES" length="100" />
+        </property>
+        <property name="nombredechaines" type="string">
+            <column name="NOMBREDECHAINES" length="100" />
+        </property>
+        <property name="nombredemployes" type="string">
+            <column name="NOMBREDEMPLOYES" length="100" />
+        </property>
+        <property name="nombredemachines" type="string">
+            <column name="NOMBREDEMACHINES" length="100" />
+        </property>
+        <property name="plan" type="string">
+            <column name="PLAN" length="100" />
+        </property>
+        <property name="type" type="string">
+            <column name="TYPE" length="100" />
+        </property>
+        <property name="commentaire" type="string">
+            <column name="COMMENTAIRE" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

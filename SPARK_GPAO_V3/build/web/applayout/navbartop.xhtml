@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:b="http://bootsfaces.net/ui">
+    <!--xmlns:jsf="http://xmlns.jcp.org/jsf"-->
+
+    <style>
+        .columns>.dropdown-menu {
+            -moz-column-count: 2; /* Firefox */
+            -webkit-column-count: 2; /* Safari and Chrome */
+            column-count: 2;
+            width: 700px;
+        }
+    </style>
+    <b:navBar brand="SPARK GPAO V-3.0.1" 
+              inverse="true" fluid="true" position="top" sticky="true"
+              style="padding-left: 5%;padding-right: 5%;padding-top:0px;padding-bottom:0px;font-weight: bolder;z-index: 1000;">
+
+        <b:navbarLinks>
+            <b:dropMenu value="Donnee technique" icon="glyphicon glyphicon-file">
+                <b:navLink value="Gestion des articles" outcome="gestionArticle.xhtml" />
+                <b:navLink/>
+                <b:navLink value="Nomenclature" outcome="nomenclature.xhtml"/>
+                <b:navLink/>
+                <b:navLink value="Gamme" outcome="gamme.xhtml" />
+                <b:navLink/>
+                <b:navLink value="Gestion des machines" outcome="gestionMachine.xhtml" />
+                <b:navLink/>
+                <b:navLink value="Structure" outcome="structure.xhtml" />
+            </b:dropMenu>
+
+            <b:dropMenu value="Plannification" icon="glyphicon glyphicon-align-left">
+                <b:navLink value="Prévisions de production" outcome="" />
+                <b:navLink />
+                <b:navLink value="Gestion des PDP" outcome="PDP.xhtml" />
+                <b:navLink />
+                <b:navLink value="CBN" outcome="" />
+                <b:navLink />
+                <b:navLink value="Plannification/Phase" outcome="" />
+                <b:navLink />
+                <b:navLink value="Plannification/Operation" outcome="" />
+                <b:navLink />
+                <b:navLink value="Planning" outcome="" />
+            </b:dropMenu>
+
+            <b:dropMenu value="Suivi de fabrication" icon="glyphicon glyphicon-eye-open">
+                <b:navLink value="Suivi de production" outcome="" />
+                <b:navLink/>
+                <b:navLink value="Suivi de qualite" outcome="" />
+            </b:dropMenu>
+            <b:navLink value="Gestion de qualite" icon="glyphicon glyphicon-thumbs-up">
+            </b:navLink>
+            <b:dropMenu value="Cout de production" icon="glyphicon glyphicon-usd">
+                <b:navLink value="Cout prevesionnel/Article " outcome="" />
+                <b:navLink/>
+                <b:navLink value="Cout prevesionnel/Commande" outcome="" />
+                <b:navLink/>
+                <b:navLink value="Cout reel/OF " outcome="" />
+                <b:navLink/>
+                <b:navLink value="Cout reel/Commande" outcome="" />
+            </b:dropMenu>
+            
+            <b:dropMenu value="Statistique" icon="glyphicon glyphicon-stats">
+                <b:navLink value="Alert" outcome="" />
+                <b:navLink/>
+                <b:navLink value="Etat" outcome="" />
+                <b:navLink/>
+                <b:navLink value="Statistique" outcome="" />
+            </b:dropMenu>
+            <b:dropMenu value="Paramétrage" icon="glyphicon glyphicon-cog">
+                <!--                <b:navLink value="&nbsp;Tables" icon="glyphicon glyphicon-text-height" outcome="/Parametres/tables" />
+                                    <b:navLink/>-->
+                <!--                <b:navLink value="&nbsp;Langues" icon="glyphicon glyphicon-globe" />
+                                    <b:navLink/>-->
+                <b:navLink value="&nbsp;Personnel et divers" icon="glyphicon glyphicon-list" outcome=""/>
+                <b:navLink/>
+                <b:navLink outcome="" value="&nbsp;Structure" icon="glyphicon glyphicon-th" />
+                <b:navLink/>
+                <b:navLink outcome="" value="&nbsp;Configuration générale" icon="glyphicon glyphicon-cog" />
+            </b:dropMenu>
+        </b:navbarLinks>
+
+        <b:navbarLinks pull="right">
+            <b:dropMenu value="Utilisateur :" icon="glyphicon glyphicon-user" >
+                <b:navLink>
+                    <h:outputLink value="#{request.contextPath}/j_spring_security_logout">
+                        <h:outputText value="Fermer la session"/>
+                        <h:graphicImage style="margin-left: 10px" height="18" width="18" url="/images/exit.jpg" title="Déconnexion"/>
+                    </h:outputLink>	
+                </b:navLink>
+                <b:navLink/>
+
+            </b:dropMenu>
+        </b:navbarLinks>
+
+        
+            
+        
+
+    </b:navBar>
+</ui:fragment>

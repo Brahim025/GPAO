@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 mars 2017 16:40:31 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.entities.Lignenomenclature" table="LIGNENOMENCLATURE" schema="SPARK_GPAO_V3">
+        <id name="code" type="string">
+            <column name="CODE" length="100" />
+            <generator class="assigned" />
+        </id>
+         <many-to-one name="article" lazy="false" class="com.entities.Article" fetch="join">
+            <column name="ARTICLE" length="100"></column>
+        </many-to-one>
+         <many-to-one name="nomenclature" lazy="false" class="com.entities.Nomenclature" fetch="join">
+            <column name="NOMENCLATURE" length="100"></column>
+        </many-to-one>
+        <property name="coefficient" type="java.lang.Double">
+            <column name="COEFFICIENT" precision="100" scale="0" />
+        </property>
+        <property name="niveau" type="big_decimal">
+            <column name="NIVEAU" precision="22" scale="0" />
+        </property>
+        <property name="longueur" type="java.lang.Double">
+            <column name="LONGUEUR" precision="100" scale="0" />
+        </property>
+        <property name="larg" type="java.lang.Double">
+            <column name="LARG" precision="100" scale="0" />
+        </property>
+        <property name="poids" type="java.lang.Double">
+            <column name="POIDS" precision="100" scale="0" />
+        </property>
+        <property name="remarque" type="string">
+            <column name="REMARQUE" length="100" />
+        </property>
+       
+        <property name="lignepere" type="string">
+            <column name="LIGNEPERE" length="100" />
+        </property>
+        <property name="quantite" type="big_decimal">
+            <column name="QUANTITE" precision="22" scale="0" />
+        </property>
+        <property name="diametre" type="java.lang.Double">
+            <column name="DIAMETRE" precision="100" scale="0" />
+        </property>
+        <property name="numeroordre" type="java.lang.Long">
+            <column name="NUMEROORDRE" precision="10" scale="0" />
+        </property>
+        <property name="position" type="string">
+            <column name="POSITION" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

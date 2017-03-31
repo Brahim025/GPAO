@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Gestion Societe</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl life="5000" autoUpdate="true"/>
+            <b:well>  
+                <b:row>
+                    <b:column span="12">
+                        <b:column span="6">
+                            <b:panel title="Societe" collapsible="false"> 
+                                <b:column span="6">
+                                    <h:outputLabel  value="Code Societe:"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.ordercode}"></b:inputText>  
+                                </b:column>
+                                <b:column span="6">
+                                    <h:outputLabel value="Designation:"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.nomdelasociete}" ></b:inputText>
+                                </b:column>          
+                                <b:column span="6">
+                                    <h:outputLabel value="Adresse 1 :"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.adresse1}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Adresse 2 :"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.adresse2}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Tel :"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.tel1}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Fax :"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.fax}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Email :"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.email}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Activite"></h:outputLabel>
+                                    <b:inputText  value="#{ComptabiliteBean.comptabilite.activite}" ></b:inputText>
+                                </b:column> 
+                                <b:column span="6">
+                                    <h:outputLabel value="Date de Creation  :"></h:outputLabel>
+                                    <p:calendar value="#{ComptabiliteBean.comptabilite.datedecreation}" pattern="dd/MM/yyyy"/>
+                                </b:column> 
+                                <b:column span="12" style="margin-top: 5px;">
+                                    <p:commandButton  style="margin: 2px;" title="Enregistrer" action="#{ComptabiliteBean.createEditComptabiilite()}" update="@form" ajax="false" value="Enregistrer"  icon="ui-icon-circle-plus"/>                
+                                    <p:commandButton style="margin: 2px;" title="Supprimer" action="#{ComptabiliteBean.remove()}" ajax="false" update="@form" value="Supprimer" icon="ui-icon-circle-close"/>
+                                    <p:commandButton id="groa" style="margin: 2px;" value="Annuler" action="#{ComptabiliteBean.init()}" ajax="false" update="@form" icon="ui-icon-circle-minus"/>
+                                    <p:tooltip id="toolTipGrow" for="groa" value="Annuler"
+                                               showEffect="clip" hideEffect="explode"/>
+
+                                </b:column>          
+                            </b:panel> 
+                        </b:column>
+                        <b:column  span="6">
+                            <b:panel title="Liste des societes" collapsible="false" >    
+
+                                <b:dataTable id="example" value="#{comptabiliteBean.listeComptabilites}" var="comptabilite" lang="fr" scrollCollapse="true" scrollX="true">
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <h:outputText value="Sélection"/>
+                                        </f:facet>
+                                        <b:commandButton value="" icon="glyphicon glyphicon-search" onclick="ajax:comptabiliteBean.select(comptabilite)" update="@form"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn label="Code Societe" value="#{comptabilite.codecompta}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Designation" value="#{comptabilite.nomdelasociete}" />
+                                    <b:dataTableColumn label="Adresse 1" value="#{comptabilite.adresse1}" style="width: 100px"/>
+                                    <b:dataTableColumn label="Adresse 2" value="#{comptabilite.adresse2}" style="width: 100px"/>
+                                    <b:dataTableColumn label="Date de Creation " value="#{comptabilite.datedecreation}" style="width: 120px"/>
+                                    <b:dataTableColumn label="Tel" value="#{comptabilite.tel1}" />
+                                    <b:dataTableColumn label="Fax" value="#{comptabilite.fax}" />
+                                    <b:dataTableColumn label="Email" value="#{comptabilite.email}" />
+                                    <b:dataTableColumn label="Activite" value="#{comptabilite.activite}" />
+                                </b:dataTable>
+
+                            </b:panel>
+                        </b:column>
+
+                    </b:column>
+                </b:row>
+            </b:well>  
+        </h:form>   
+    </h:body>
+</html>
+

@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 mars 2017 15:30:52 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.entities.Comptabilite" table="COMPTABILITE" schema="SPARK_GPAO_V3">
+        <id name="codecompta" type="string">
+            <column name="CODECOMPTA" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="ordercode" type="date">
+            <column name="ORDERCODE" length="100" />
+        </property>
+        <property name="datedecreation" type="date">
+            <column name="DATEDECREATION" length="7" />
+        </property>
+        <property name="nomdelasociete" type="string">
+            <column name="NOMDELASOCIETE" length="100" />
+        </property>
+        <property name="matriculefiscal" type="string">
+            <column name="MATRICULEFISCAL" length="40" />
+        </property>
+        <property name="formejuridique" type="string">
+            <column name="FORMEJURIDIQUE" length="100" />
+        </property>
+        <property name="adresse1" type="string">
+            <column name="ADRESSE1" length="100" />
+        </property>
+        <property name="adresse2" type="string">
+            <column name="ADRESSE2" length="100" />
+        </property>
+        <property name="adresse3" type="string">
+            <column name="ADRESSE3" length="100" />
+        </property>
+        <property name="pays" type="string">
+            <column name="PAYS" length="100" />
+        </property>
+        <property name="ville" type="string">
+            <column name="VILLE" length="100" />
+        </property>
+        <property name="codepostal" type="string">
+            <column name="CODEPOSTAL" length="100" />
+        </property>
+        <property name="tel1" type="string">
+            <column name="TEL1" length="100" />
+        </property>
+        <property name="tel2" type="string">
+            <column name="TEL2" length="100" />
+        </property>
+        <property name="fax" type="string">
+            <column name="FAX" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="100" />
+        </property>
+        <property name="activite" type="string">
+            <column name="ACTIVITE" length="100" />
+        </property>
+        <property name="rib" type="string">
+            <column name="RIB" length="100" />
+        </property>
+        <property name="iban" type="string">
+            <column name="IBAN" length="100" />
+        </property>
+        <property name="codetva" type="string">
+            <column name="CODETVA" length="100" />
+        </property>
+        <property name="codecategorie" type="string">
+            <column name="CODECATEGORIE" length="100" />
+        </property>
+        <property name="etabsecond" type="string">
+            <column name="ETABSECOND" length="100" />
+        </property>
+        <property name="groupe" type="string">
+            <column name="GROUPE" length="100" />
+        </property>
+        <property name="adresselivraison" type="string">
+            <column name="ADRESSELIVRAISON" length="100" />
+        </property>
+        <property name="registrecommerce" type="string">
+            <column name="REGISTRECOMMERCE" length="100" />
+        </property>
+        <property name="siteweb" type="string">
+            <column name="SITEWEB" length="100" />
+        </property>
+        <property name="numsecuritesociale" type="string">
+            <column name="NUMSECURITESOCIALE" length="100" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="MOBILE" length="100" />
+        </property>
+        <property name="codedouane" type="string">
+            <column name="CODEDOUANE" length="100" />
+        </property>
+        <property name="capital" type="java.lang.Double">
+            <column name="CAPITAL" precision="100" scale="0" />
+        </property>
+        <property name="logo" type="blob">
+            <column name="LOGO" />
+        </property>
+        <property name="signature" type="blob">
+            <column name="SIGNATURE" />
+        </property>
+        <property name="etat" type="string">
+            <column name="ETAT" length="20" />
+        </property>
+        <property name="archive" type="string">
+            <column name="ARCHIVE" length="5" />
+        </property>
+        <property name="maxcmdlignes" type="big_decimal">
+            <column name="MAXCMDLIGNES" precision="22" scale="0" />
+        </property>
+        <property name="maxentreelignes" type="big_decimal">
+            <column name="MAXENTREELIGNES" precision="22" scale="0" />
+        </property>
+        <property name="maxsortielignes" type="big_decimal">
+            <column name="MAXSORTIELIGNES" precision="22" scale="0" />
+        </property>
+        <property name="codefraiscmd1" type="string">
+            <column name="CODEFRAISCMD1" length="100" />
+        </property>
+        <property name="codefraiscmd2" type="string">
+            <column name="CODEFRAISCMD2" length="100" />
+        </property>
+        <property name="codefraiscmd3" type="string">
+            <column name="CODEFRAISCMD3" length="100" />
+        </property>
+        <property name="codefraiscmd4" type="string">
+            <column name="CODEFRAISCMD4" length="100" />
+        </property>
+        <property name="codefraiscmd5" type="string">
+            <column name="CODEFRAISCMD5" length="100" />
+        </property>
+        <property name="codetaxecmd1" type="string">
+            <column name="CODETAXECMD1" length="100" />
+        </property>
+        <property name="codetaxecmd2" type="string">
+            <column name="CODETAXECMD2" length="100" />
+        </property>
+        <property name="codetaxecmd3" type="string">
+            <column name="CODETAXECMD3" length="100" />
+        </property>
+        <property name="codetaxecmd4" type="string">
+            <column name="CODETAXECMD4" length="100" />
+        </property>
+        <property name="codetaxecmd5" type="string">
+            <column name="CODETAXECMD5" length="100" />
+        </property>
+        <property name="prefixcodecommande" type="string">
+            <column name="PREFIXCODECOMMANDE" length="50" />
+        </property>
+        <property name="numerocommande" type="big_decimal">
+            <column name="NUMEROCOMMANDE" precision="22" scale="0" />
+        </property>
+        <property name="suffixecodecommande" type="string">
+            <column name="SUFFIXECODECOMMANDE" length="50" />
+        </property>
+        <property name="iddonneespaie" type="string">
+            <column name="IDDONNEESPAIE" length="100" />
+        </property>
+        <property name="iddonneespointage" type="string">
+            <column name="IDDONNEESPOINTAGE" length="100" />
+        </property>
+        <property name="debligneimpotationcmd" type="java.lang.Integer">
+            <column name="DEBLIGNEIMPOTATIONCMD" precision="6" scale="0" />
+        </property>
+        <property name="finligneimpotationcmd" type="java.lang.Integer">
+            <column name="FINLIGNEIMPOTATIONCMD" precision="6" scale="0" />
+        </property>
+        <property name="numsheetimpotationcmd" type="java.lang.Integer">
+            <column name="NUMSHEETIMPOTATIONCMD" precision="6" scale="0" />
+        </property>
+        <property name="debligneimpotationent" type="java.lang.Integer">
+            <column name="DEBLIGNEIMPOTATIONENT" precision="6" scale="0" />
+        </property>
+        <property name="finligneimpotationent" type="java.lang.Integer">
+            <column name="FINLIGNEIMPOTATIONENT" precision="6" scale="0" />
+        </property>
+        <property name="numsheetimpotationent" type="java.lang.Integer">
+            <column name="NUMSHEETIMPOTATIONENT" precision="6" scale="0" />
+        </property>
+        <property name="debligneimpotationinv" type="java.lang.Integer">
+            <column name="DEBLIGNEIMPOTATIONINV" precision="6" scale="0" />
+        </property>
+        <property name="finligneimpotationinv" type="java.lang.Integer">
+            <column name="FINLIGNEIMPOTATIONINV" precision="6" scale="0" />
+        </property>
+        <property name="numsheetimpotationinv" type="java.lang.Integer">
+            <column name="NUMSHEETIMPOTATIONINV" precision="6" scale="0" />
+        </property>
+        <property name="debligneimpotationtrsf" type="java.lang.Integer">
+            <column name="DEBLIGNEIMPOTATIONTRSF" precision="6" scale="0" />
+        </property>
+        <property name="finligneimpotationtrsf" type="java.lang.Integer">
+            <column name="FINLIGNEIMPOTATIONTRSF" precision="6" scale="0" />
+        </property>
+        <property name="numsheetimpotationtrsf" type="java.lang.Integer">
+            <column name="NUMSHEETIMPOTATIONTRSF" precision="6" scale="0" />
+        </property>
+        <property name="fctpersonnel1" type="string">
+            <column name="FCTPERSONNEL1" length="5" />
+        </property>
+        <property name="fctpersonnel2" type="string">
+            <column name="FCTPERSONNEL2" length="5" />
+        </property>
+        <property name="fctpersonnel3" type="string">
+            <column name="FCTPERSONNEL3" length="5" />
+        </property>
+        <property name="fctpersonnel4" type="string">
+            <column name="FCTPERSONNEL4" length="5" />
+        </property>
+        <property name="fctpersonnel5" type="string">
+            <column name="FCTPERSONNEL5" length="5" />
+        </property>
+        <property name="fctpersonnel6" type="string">
+            <column name="FCTPERSONNEL6" length="5" />
+        </property>
+        <property name="mpadministration" type="string">
+            <column name="MPADMINISTRATION" length="100" />
+        </property>
+        <property name="codedevise" type="string">
+            <column name="CODEDEVISE" length="100" />
+        </property>
+        <property name="estnumtransfertaut" type="string">
+            <column name="ESTNUMTRANSFERTAUT" length="5" />
+        </property>
+        <property name="prefixnumtransfert" type="string">
+            <column name="PREFIXNUMTRANSFERT" length="50" />
+        </property>
+        <property name="numtransfert" type="big_decimal">
+            <column name="NUMTRANSFERT" precision="22" scale="0" />
+        </property>
+        <property name="fctpersonnel7" type="string">
+            <column name="FCTPERSONNEL7" length="5" />
+        </property>
+        <property name="datesysteme" type="date">
+            <column name="DATESYSTEME" length="7" />
+        </property>
+        <property name="numpersonnel" type="big_decimal">
+            <column name="NUMPERSONNEL" precision="22" scale="0" />
+        </property>
+        <property name="matrpersonnel" type="string">
+            <column name="MATRPERSONNEL" length="50" />
+        </property>
+        <property name="prefixepersonnel" type="string">
+            <column name="PREFIXEPERSONNEL" length="50" />
+        </property>
+        <property name="procmatrperonnel" type="string">
+            <column name="PROCMATRPERONNEL" length="50" />
+        </property>
+        <property name="fctpersonnel8" type="string">
+            <column name="FCTPERSONNEL8" length="5" />
+        </property>
+    </class>
+</hibernate-mapping>

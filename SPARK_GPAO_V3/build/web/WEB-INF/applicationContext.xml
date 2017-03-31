@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee/spring-jee-2.5.xsd"
+       xmlns:util="http://www.springframework.org/schema/util/spring-util-2.5.xsd"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
+        <property name="username" value="SPARK_GPAO_V3"></property>
+        <property name="password" value="spark_it"></property>
+    </bean>
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>-->
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        
+        <property name="mappingResources">
+            <list>
+                
+                <value>/com/entities/Article.hbm.xml</value>
+                <value>/com/entities/Nomenclature.hbm.xml</value>
+                <value>/com/entities/Lignenomenclature.hbm.xml</value>
+                <value>/com/entities/Comptabilite.hbm.xml</value>
+                <value>/com/entities/Usine.hbm.xml</value>
+                <value>/com/entities/Atelier.hbm.xml</value>
+                <value>/com/entities/Chaine.hbm.xml</value>
+                <value>/com/entities/Postetravail.hbm.xml</value>
+                <value>/com/entities/Machine.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- Entities : couche modele-->
+    <bean id="societe" class="com.entities.Comptabilite"/>
+    <bean id="usine" class="com.entities.Usine"/>
+    <bean id="chaine" class="com.entities.Chaine"/>
+    <bean id="atelier" class="com.entities.Atelier"/>
+    <bean id="postetravail" class="com.entities.Postetravail"/>
+    <bean id="machine" class="com.entities.Machine"/>
+    <bean id="article" class="com.entities.Article"/>
+    <bean id="nomenclature" class="com.entities.Nomenclature"/>
+    <bean id="lignenomenclature" class="com.entities.Lignenomenclature"/>
+    
+
+    <!-- DAO : Data Access Object-->
+    <bean id="articleDAO" class="com.dao.ImplArticle">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="nomenclatureDAO" class="com.dao.ImplNomenclature">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="lignenomenclatureDAO" class="com.dao.ImplLignenomenclature">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="comptabiliteDAO" class="com.dao.ImplComptabilite">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="usineDAO" class="com.dao.ImplUsine">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="atelierDAO" class="com.dao.ImplAtelier">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="chaineDAO" class="com.dao.ImplChaine">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="postetravailDAO" class="com.dao.ImplPosteTravail">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    <bean id="machineDAO" class="com.dao.ImplMachine">
+        <property name="sessionFactory" ref="sessionFactory"> </property>
+    </bean>
+    
+    <!-- Bean : Couche controller -->
+    <bean id="articleBean" class="com.bean.ArticleBean">
+        <property name="articleDAO" ref="articleDAO"> </property>
+    </bean>
+    <bean id="nomenclatureBean" class="com.bean.NomenclatureBean">
+        <property name="nomenclatureDAO" ref="nomenclatureDAO"> </property>
+        <property name="lignenomenclatureDAO" ref="lignenomenclatureDAO"> </property>
+    </bean>
+   
+    <bean id="comptabiliteBean" class="com.bean.ComptabiliteBean">
+        <property name="comptabiliteDAO" ref="comptabiliteDAO"> </property>
+        <property name="comptabilite" ref="societe"> </property>
+    </bean>
+    <bean id="usineBean" class="com.bean.UsineBean">
+        <property name="usineDAO" ref="usineDAO"> </property>
+    </bean>
+    <bean id="chaineBean" class="com.bean.ChaineBean">
+        <property name="chaineDAO" ref="chaineDAO"> </property>
+    </bean>
+    <bean id="atelierBean" class="com.bean.AtelierBean">
+        <property name="atelierDAO" ref="atelierDAO"> </property>
+    </bean>
+    <bean id="machineBean" class="com.bean.MachineBean">
+        <property name="machineDAO" ref="machineDAO"> </property>
+    </bean>
+    
+    
+    
+    <bean id="structureBean" class="com.bean.StructureBean">
+        <property name="comptabiliteDAO" ref="comptabiliteDAO"> </property>
+        <property name="usineDAO" ref="usineDAO"> </property>
+        <property name="atelierDAO" ref="atelierDAO"> </property>
+        <property name="chaineDAO" ref="chaineDAO"> </property>
+        <property name="postetravailDAO" ref="postetravailDAO"> </property>
+        
+        <property name="usine" ref="usine"> </property>
+        <property name="atelier" ref="atelier"> </property>
+        <property name="chaine" ref="chaine"> </property>
+        <property name="postetravail" ref="postetravail"> </property>
+        <property name="societe" ref="societe"> </property>
+    </bean>
+    
+    
+    <context:annotation-config></context:annotation-config>
+    <!--<import resource="spring-security.xml"/>-->
+</beans>

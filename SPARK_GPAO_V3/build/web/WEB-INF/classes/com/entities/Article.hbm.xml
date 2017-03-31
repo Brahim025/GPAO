@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 mars 2017 15:29:59 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.entities.Article" table="ARTICLE" schema="SPARK_GPAO_V3">
+        <id name="codearticle" type="string">
+            <column name="CODEARTICLE" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="codefamillearticle" type="string">
+            <column name="CODEFAMILLEARTICLE" length="100" />
+        </property>
+        <property name="codeconditionnement" type="string">
+            <column name="CODECONDITIONNEMENT" length="100" />
+        </property>
+        <property name="nomarticle" type="string">
+            <column name="NOMARTICLE" length="100" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="2000" />
+        </property>
+        <property name="datecreation" type="date">
+            <column name="DATECREATION" length="7" />
+        </property>
+        <property name="fabricant" type="string">
+            <column name="FABRICANT" length="100" />
+        </property>
+        <property name="prixunitaire" type="java.lang.Double">
+            <column name="PRIXUNITAIRE" precision="100" scale="0" />
+        </property>
+        <property name="prixunitaireachat" type="string">
+            <column name="PRIXUNITAIREACHAT" length="100" />
+        </property>
+        <property name="poids" type="java.lang.Double">
+            <column name="POIDS" precision="100" scale="0" />
+        </property>
+        <property name="volume" type="java.lang.Double">
+            <column name="VOLUME" precision="100" scale="0" />
+        </property>
+        <property name="type" type="string">
+            <column name="TYPE" length="100" />
+        </property>
+        <property name="achetefabrique" type="string">
+            <column name="ACHETEFABRIQUE" length="20" />
+        </property>
+        <property name="datederniermodif" type="date">
+            <column name="DATEDERNIERMODIF" length="7" />
+        </property>
+        <property name="quantitemax" type="java.lang.Double">
+            <column name="QUANTITEMAX" precision="100" scale="0" />
+        </property>
+        <property name="quantitemin" type="java.lang.Double">
+            <column name="QUANTITEMIN" precision="100" scale="0" />
+        </property>
+        <property name="seuildesecurite" type="java.lang.Double">
+            <column name="SEUILDESECURITE" precision="100" scale="0" />
+        </property>
+        <property name="quantiteenstock" type="java.lang.Double">
+            <column name="QUANTITEENSTOCK" precision="100" scale="0" />
+        </property>
+        <property name="img" type="string">
+            <column name="IMG" length="100" />
+        </property>
+        <property name="image" type="blob">
+            <column name="IMAGE" />
+        </property>
+        <property name="fichetechnique" type="string">
+            <column name="FICHETECHNIQUE" length="100" />
+        </property>
+        <property name="largeur" type="java.lang.Double">
+            <column name="LARGEUR" precision="100" scale="0" />
+        </property>
+        <property name="longueur" type="java.lang.Double">
+            <column name="LONGUEUR" precision="100" scale="0" />
+        </property>
+        <property name="hauteur" type="java.lang.Double">
+            <column name="HAUTEUR" precision="100" scale="0" />
+        </property>
+        <property name="cump" type="big_decimal">
+            <column name="CUMP" precision="22" scale="0" />
+        </property>
+        <property name="datepreemption" type="date">
+            <column name="DATEPREEMPTION" length="7" />
+        </property>
+        <property name="dureepreemption" type="java.lang.Double">
+            <column name="DUREEPREEMPTION" precision="100" scale="0" />
+        </property>
+        <property name="lotmin" type="big_decimal">
+            <column name="LOTMIN" precision="22" scale="0" />
+        </property>
+        <property name="delaiobtantion" type="big_decimal">
+            <column name="DELAIOBTANTION" precision="22" scale="0" />
+        </property>
+        <property name="archive" type="string">
+            <column name="ARCHIVE" length="5" />
+        </property>
+        <property name="nomenclaturedouaniere" type="string">
+            <column name="NOMENCLATUREDOUANIERE" length="100" />
+        </property>
+        <property name="tauxtva" type="java.lang.Double">
+            <column name="TAUXTVA" precision="100" scale="0" />
+        </property>
+        <property name="paysorigine" type="string">
+            <column name="PAYSORIGINE" length="100" />
+        </property>
+        <property name="typeachat" type="string">
+            <column name="TYPEACHAT" length="50" />
+        </property>
+        <property name="typedefabrication" type="string">
+            <column name="TYPEDEFABRICATION" length="100" />
+        </property>
+        <property name="poidsbrut" type="java.lang.Double">
+            <column name="POIDSBRUT" precision="100" scale="0" />
+        </property>
+        <property name="poidsnet" type="java.lang.Double">
+            <column name="POIDSNET" precision="100" scale="0" />
+        </property>
+        <property name="numeroserie" type="string">
+            <column name="NUMEROSERIE" length="100" />
+        </property>
+        <property name="quantiteminavendre" type="big_decimal">
+            <column name="QUANTITEMINAVENDRE" precision="22" scale="0" />
+        </property>
+        <property name="referencearticle" type="string">
+            <column name="REFERENCEARTICLE" length="100" />
+        </property>
+        <property name="codegammearticle" type="string">
+            <column name="CODEGAMMEARTICLE" length="100" />
+        </property>
+        <property name="codeunite" type="string">
+            <column name="CODEUNITE" length="100" />
+        </property>
+        <property name="codenomnclature" type="string">
+            <column name="CODENOMNCLATURE" length="100" />
+        </property>
+        <property name="pumin" type="java.lang.Double">
+            <column name="PUMIN" precision="100" scale="0" />
+        </property>
+        <property name="pumax" type="java.lang.Double">
+            <column name="PUMAX" precision="100" scale="0" />
+        </property>
+        <property name="designationar" type="string">
+            <column name="DESIGNATIONAR" length="200" />
+        </property>
+        <property name="descriptionar" type="string">
+            <column name="DESCRIPTIONAR" length="200" />
+        </property>
+        <property name="prixrevient" type="java.lang.Double">
+            <column name="PRIXREVIENT" precision="100" scale="0" />
+        </property>
+        <property name="codearticlechezfournisseur" type="string">
+            <column name="CODEARTICLECHEZFOURNISSEUR" length="100" />
+        </property>
+        <property name="commentaire" type="string">
+            <column name="COMMENTAIRE" length="100" />
+        </property>
+        <property name="calcule" type="string">
+            <column name="CALCULE" length="20" />
+        </property>
+        <property name="etat" type="string">
+            <column name="ETAT" length="60" />
+        </property>
+        <property name="typearticle" type="string">
+            <column name="TYPEARTICLE" length="100" />
+        </property>
+        <property name="valeur" type="java.lang.Double">
+            <column name="VALEUR" precision="100" scale="0" />
+        </property>
+        <property name="remisemax" type="java.lang.Double">
+            <column name="REMISEMAX" precision="100" scale="0" />
+        </property>
+        <property name="tempsstockage" type="java.lang.Double">
+            <column name="TEMPSSTOCKAGE" precision="100" scale="0" />
+        </property>
+        <property name="tempslivraison" type="java.lang.Double">
+            <column name="TEMPSLIVRAISON" precision="100" scale="0" />
+        </property>
+        <property name="bonus" type="java.lang.Double">
+            <column name="BONUS" precision="100" scale="0" />
+        </property>
+        <property name="ndp" type="string">
+            <column name="NDP" length="100" />
+        </property>
+        <property name="delailivraison" type="string">
+            <column name="DELAILIVRAISON" length="100" />
+        </property>
+        <property name="idtva" type="string">
+            <column name="IDTVA" length="100" />
+        </property>
+        <property name="ordercode" type="string">
+            <column name="ORDERCODE" length="100" />
+        </property>
+        <property name="orderlabel" type="string">
+            <column name="ORDERLABEL" length="100" />
+        </property>
+        <property name="prixachat" type="java.lang.Double">
+            <column name="PRIXACHAT" precision="100" scale="0" />
+        </property>
+        <property name="codefournisseur" type="string">
+            <column name="CODEFOURNISSEUR" length="100" />
+        </property>
+        <property name="fraisadmin" type="java.lang.Double">
+            <column name="FRAISADMIN" precision="100" scale="0" />
+        </property>
+        <property name="idunitequantite" type="string">
+            <column name="IDUNITEQUANTITE" length="100" />
+        </property>
+        <property name="idunitepoids" type="string">
+            <column name="IDUNITEPOIDS" length="100" />
+        </property>
+        <property name="idunitepoidsnet" type="string">
+            <column name="IDUNITEPOIDSNET" length="100" />
+        </property>
+        <property name="idunitepoidsbrut" type="string">
+            <column name="IDUNITEPOIDSBRUT" length="100" />
+        </property>
+        <property name="idunitevolume" type="string">
+            <column name="IDUNITEVOLUME" length="100" />
+        </property>
+        <property name="idunitelongueur" type="string">
+            <column name="IDUNITELONGUEUR" length="100" />
+        </property>
+        <property name="idunitelargeur" type="string">
+            <column name="IDUNITELARGEUR" length="100" />
+        </property>
+        <property name="idunitehauteur" type="string">
+            <column name="IDUNITEHAUTEUR" length="100" />
+        </property>
+        <property name="idunitetempsstockage" type="string">
+            <column name="IDUNITETEMPSSTOCKAGE" length="100" />
+        </property>
+        <property name="idunitetempslivraison" type="string">
+            <column name="IDUNITETEMPSLIVRAISON" length="100" />
+        </property>
+        <property name="codesociete" type="string">
+            <column name="CODESOCIETE" length="100" />
+        </property>
+        <property name="idunitedureeperemption" type="string">
+            <column name="IDUNITEDUREEPEREMPTION" length="100" />
+        </property>
+        <property name="criteredepasserseuil" type="string">
+            <column name="CRITEREDEPASSERSEUIL" length="5" />
+        </property>
+        <property name="prixachatmoyenpondere" type="java.lang.Double">
+            <column name="PRIXACHATMOYENPONDERE" precision="100" scale="0" />
+        </property>
+        <property name="benefice" type="java.lang.Double">
+            <column name="BENEFICE" precision="100" scale="0" />
+        </property>
+        <property name="prixunitairettc" type="java.lang.Double">
+            <column name="PRIXUNITAIRETTC" precision="100" scale="0" />
+        </property>
+        <property name="codefrais1" type="string">
+            <column name="CODEFRAIS1" length="100" />
+        </property>
+        <property name="codefrais2" type="string">
+            <column name="CODEFRAIS2" length="100" />
+        </property>
+        <property name="codefrais3" type="string">
+            <column name="CODEFRAIS3" length="100" />
+        </property>
+        <property name="codefrais4" type="string">
+            <column name="CODEFRAIS4" length="100" />
+        </property>
+        <property name="codefrais5" type="string">
+            <column name="CODEFRAIS5" length="100" />
+        </property>
+        <property name="codetaxe1" type="string">
+            <column name="CODETAXE1" length="100" />
+        </property>
+        <property name="codetaxe2" type="string">
+            <column name="CODETAXE2" length="100" />
+        </property>
+        <property name="codetaxe3" type="string">
+            <column name="CODETAXE3" length="100" />
+        </property>
+        <property name="codetaxe4" type="string">
+            <column name="CODETAXE4" length="100" />
+        </property>
+        <property name="codetaxe5" type="string">
+            <column name="CODETAXE5" length="100" />
+        </property>
+        <property name="valeurtotale" type="java.lang.Double">
+            <column name="VALEURTOTALE" precision="100" scale="0" />
+        </property>
+        <property name="stockalerte" type="java.lang.Double">
+            <column name="STOCKALERTE" precision="100" scale="0" />
+        </property>
+        <property name="gamme" type="string">
+            <column name="GAMME" length="100" />
+        </property>
+        <property name="diametre" type="java.lang.Double">
+            <column name="DIAMETRE" precision="100" scale="0" />
+        </property>
+        <property name="idunitediametre" type="string">
+            <column name="IDUNITEDIAMETRE" length="100" />
+        </property>
+        <property name="cout" type="java.lang.Double">
+            <column name="COUT" precision="100" scale="0" />
+        </property>
+        <property name="fichearticle" type="string">
+            <column name="FICHEARTICLE" length="100" />
+        </property>
+        <property name="stockinitial" type="java.lang.Double">
+            <column name="STOCKINITIAL" precision="20" scale="0" />
+        </property>
+        <property name="date1" type="date">
+            <column name="DATE1" length="7" />
+        </property>
+        <property name="date2" type="date">
+            <column name="DATE2" length="7" />
+        </property>
+        <property name="designationan" type="string">
+            <column name="DESIGNATIONAN" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

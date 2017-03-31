@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 mars 2017 12:29:46 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.entities.Machine" table="MACHINE" schema="SPARK_GPAO_V3">
+        <id name="code" type="string">
+            <column name="CODE" length="100" />
+            <generator class="assigned" />
+        </id>
+         <many-to-one name="codeatelier" lazy="false" class="com.entities.Atelier" fetch="join">
+            <column name="CODEATELIER" length="100"></column>
+        </many-to-one>
+        <property name="postedecharge" type="string">
+            <column name="POSTEDECHARGE" length="100" />
+        </property>
+        <property name="ordercode" type="string">
+            <column name="ORDERCODE" length="100" />
+        </property>
+        <property name="designation" type="string">
+            <column name="DESIGNATION" length="100" />
+        </property>
+        <property name="type" type="string">
+            <column name="TYPE" length="100" />
+        </property>
+        <property name="etat" type="string">
+            <column name="ETAT" length="100" />
+        </property>
+        <property name="dateacquisition" type="date">
+            <column name="DATEACQUISITION" length="7" />
+        </property>
+        <property name="coutachat" type="java.lang.Double">
+            <column name="COUTACHAT" precision="100" scale="0" />
+        </property>
+        <property name="delaiAmortissement" type="big_decimal">
+            <column name="DELAI_AMORTISSEMENT" precision="22" scale="0" />
+        </property>
+        <property name="operateur" type="string">
+            <column name="OPERATEUR" length="100" />
+        </property>
+        <property name="coutoperateur" type="java.lang.Double">
+            <column name="COUTOPERATEUR" precision="100" scale="0" />
+        </property>
+       
+        <property name="coutenerg" type="java.lang.Double">
+            <column name="COUTENERG" precision="100" scale="0" />
+        </property>
+        <property name="coutamortissemnt" type="java.lang.Double">
+            <column name="COUTAMORTISSEMNT" precision="100" scale="0" />
+        </property>
+        <property name="marque" type="string">
+            <column name="MARQUE" length="100" />
+        </property>
+        <property name="reference" type="string">
+            <column name="REFERENCE" length="100" />
+        </property>
+        <property name="identifiant" type="string">
+            <column name="IDENTIFIANT" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>
